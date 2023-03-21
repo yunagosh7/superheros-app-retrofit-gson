@@ -1,6 +1,9 @@
 package com.example.superheroappgson
 
+import com.example.superheroappgson.model.SuperherosDataResponse
+import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface ApiServices {
 
@@ -12,6 +15,6 @@ interface ApiServices {
      * ha llamado, permitiendo que siga haciendo tareas
      */
     @GET("api.php/6147419042016914/search/{name}")
-    suspend fun getSuperhero(name: String) :
+    suspend fun getSuperhero(@Path("name") superheroName: String): Response<SuperherosDataResponse>
 
 }
