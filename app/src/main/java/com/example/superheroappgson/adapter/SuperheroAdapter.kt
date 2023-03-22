@@ -1,4 +1,4 @@
-package com.example.superheroappgson.model.adapter
+package com.example.superheroappgson.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

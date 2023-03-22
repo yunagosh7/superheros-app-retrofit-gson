@@ -8,7 +8,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.superheroappgson.databinding.ActivityMainBinding
 import com.example.superheroappgson.model.SuperherosDataResponse
-import com.example.superheroappgson.model.adapter.SuperheroAdapter
+import com.example.superheroappgson.adapter.SuperheroAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
                 val response: SuperherosDataResponse? = myResponse.body()
                 if (response != null) {
 
-                    Log.i("MainActivity", "${response.toString()}")
+                    Log.i("MainActivity", "${response}")
 
                     runOnUiThread {
                         binding.progressBar.isVisible = false
