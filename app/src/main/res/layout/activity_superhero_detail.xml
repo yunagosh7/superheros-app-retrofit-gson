@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.SuperheroDetailActivity">
+    
+    <ImageView
+        android:id="@+id/iv_superhero_detail_image"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:scaleType="centerCrop" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="220dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="30dp"
+        android:elevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@id/tv_superhero_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:text="Texto de prueba"
+                android:gravity="center_horizontal"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/tv_superhero_realname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textStyle="italic"
+                tools:text="Texto de prueba"
+                android:gravity="center_horizontal"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/tv_superhero_publisher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                tools:text="Texto de prueba"
+                android:gravity="end"
+                android:paddingHorizontal="8dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="32dp"
+                android:layout_marginHorizontal="16dp"
+                android:gravity="bottom">
+
+                <View
+                    android:id="@+id/view_intelligence"
+                    android:background="@color/stat_intelligence"
+                    style="@style/view_superhero_stat"/>
+
+                <View
+                    android:id="@+id/view_strength"
+                    android:background="@color/stat_strength"
+                    style="@style/view_superhero_stat"/>
+
+                <View
+                    android:id="@+id/view_speed"
+                    android:background="@color/stat_speed"
+                    style="@style/view_superhero_stat"/>
+
+                <View
+                    android:id="@+id/view_durability"
+                    android:background="@color/stat_durability"
+                    style="@style/view_superhero_stat"
+                    />
+
+                <View
+                    android:id="@+id/view_power"
+                    android:background="@color/stat_power"
+                    style="@style/view_superhero_stat"/>
+
+                <View
+                    android:id="@+id/view_combat"
+                    android:background="@color/stat_combat"
+                    style="@style/view_superhero_stat"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="32dp"
+                android:layout_marginHorizontal="16dp">
+
+                <TextView
+                    style="@style/tv_superhero_details"
+                    android:text="@string/intelligence"/>
+
+                <TextView
+                    style="@style/tv_superhero_details"
+                    android:text="@string/strength"/>
+
+                <TextView
+                    style="@style/tv_superhero_details"
+                    android:text="@string/speed" />
+
+                <TextView
+                    style="@style/tv_superhero_details"
+                    android:text="@string/durability"/>
+
+                <TextView
+                    style="@style/tv_superhero_details"
+                    android:text="@string/power"/>
+
+                <TextView
+                    style="@style/tv_superhero_details"
+                    android:text="@string/combat" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

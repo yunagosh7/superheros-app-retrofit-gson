@@ -9,4 +9,11 @@
     <color name="white">#FFFFFFFF</color>
     
     <color name="item_name">#8D673AB7</color>
+
+    <color name="stat_intelligence">#5AEB5A</color>
+    <color name="stat_strength">#F63737</color>
+    <color name="stat_speed">#FF6130</color>
+    <color name="stat_durability">#3A52F4</color>
+    <color name="stat_power">#EBEB4D</color>
+    <color name="stat_combat">#8719E8</color>
 </resources>

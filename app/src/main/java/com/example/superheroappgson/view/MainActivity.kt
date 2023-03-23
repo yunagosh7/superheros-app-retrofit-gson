@@ -1,11 +1,15 @@
-package com.example.superheroappgson
+package com.example.superheroappgson.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.telecom.Call.Details
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.superheroappgson.ApiServices
 import com.example.superheroappgson.databinding.ActivityMainBinding
 import com.example.superheroappgson.model.SuperherosDataResponse
 import com.example.superheroappgson.adapter.SuperheroAdapter
@@ -49,7 +53,9 @@ class MainActivity : AppCompatActivity() {
         }
         )
 
-        adapter = SuperheroAdapter()
+        adapter = SuperheroAdapter {id ->
+            navigateToDetail(id)
+        }
         binding.rvSuperheros.setHasFixedSize(true)
         binding.rvSuperheros.layoutManager = LinearLayoutManager(this)
         binding.rvSuperheros.adapter = adapter
@@ -59,26 +65,35 @@ class MainActivity : AppCompatActivity() {
     private fun searchByName(query: String) {
         binding.progressBar.isVisible = true
         CoroutineScope(Dispatchers.IO).launch {
-            val myResponse: Response<SuperherosDataResponse> =
-                retrofit.create(ApiServices::class.java).getSuperhero(query)
+         try {
+             val myResponse: Response<SuperherosDataResponse> =
+                 retrofit.create(ApiServices::class.java).getSuperhero(query)
 
-            if(myResponse.isSuccessful) {
-                Log.i("MainActivity", "Anduvo")
-                val response: SuperherosDataResponse? = myResponse.body()
-                if (response != null) {
+             if(myResponse.isSuccessful) {
+                 Log.i("MainActivity", "Anduvo")
+                 val response: SuperherosDataResponse? = myResponse.body()
+                 if (response != null) {
 
-                    Log.i("MainActivity", "${response}")
+                     Log.i("MainActivity", "${response}")
 
-                    runOnUiThread {
-                        binding.progressBar.isVisible = false
-                        adapter.updateList(response.superherosList)
-                    }
+                     runOnUiThread {
+                         binding.progressBar.isVisible = false
+                         adapter.updateList(response.superherosList)
+                     }
 
-                }
+                 }
 
-            } else {
-                Log.i("MainActivity", "No anduvo")
-            }
+             } else {
+                 Log.i("MainActivity", "No anduvo")
+             }
+         } catch(e: Exception) {
+             runOnUiThread {
+                 val toast = Toast.makeText(this@MainActivity, "Comprueba tu conexion a internet", Toast.LENGTH_SHORT)
+                 toast.show()
+                 binding.progressBar.isVisible = false
+             }
+             Log.i("MainActivity", "Error: ${e.message}")
+         }
 
         }
     }
@@ -88,7 +103,11 @@ class MainActivity : AppCompatActivity() {
             .baseUrl("https://www.superheroapi.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+    }
 
-
+    private fun navigateToDetail(id: String) {
+        val intent = Intent(this, SuperheroDetailActivity::class.java)
+        intent.putExtra(SuperheroDetailActivity.EXTRA_ID ,id)
+        startActivity(intent)
     }
 }
