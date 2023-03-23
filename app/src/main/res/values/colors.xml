@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     
     <color name="item_name">#8D673AB7</color>
+    <color name="publisher">#595959</color>
 
     <color name="stat_intelligence">#5AEB5A</color>
     <color name="stat_strength">#F63737</color>
